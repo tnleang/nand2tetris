@@ -1,0 +1,42 @@
+class GuessGame {
+    field int streak;
+    field int guessTime;
+    field int guessNumber;
+    field Random ranGenerator;
+
+    constructor GuessGame new () {
+        let guessTime = 0;
+        let ranGenerator = Random.new(guessTime);
+        return this;
+    }
+
+    method void play () {
+        do Output.printString("Welcome to Guess What Number game !!!");
+        let guessNumber = ranGenerator.randRange(100);
+        do Output.printString("Guess What number? :");
+        var int guess;
+        var string guessString;
+        let guessString = Keyboard.readLine();
+        let guessTime = 1;
+        let guess = guessString.intValue();
+        while (guess != guessNumber) {
+            do Output.printString("Wrong!!!");
+            if (guess > guessNumber) {
+                do Output.printString("Guess lower :");
+            } else {
+                do Output.printString("Guess higher :");
+            }
+            let guessString = Keyboard.readLine();
+            let guessTime = guessTime + 1;
+            let guess = guessString.intValue();
+        }
+        do Output.printString("Correct!!!");
+        do Output.printString("You guess for " + guessTime + " times.");
+    }
+
+    method void dispose(){
+        ranGenerator.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}

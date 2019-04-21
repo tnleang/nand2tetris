@@ -256,60 +256,60 @@ public class Translator {
 	private String call(String f, String n) {
 		String i = count();
 		String returnAddress = String.valueOf(System.currentTimeMillis());
-		String s = // Push return address
-				"@" + returnAddress +"\n" + "D=A\n" + "@SP\n" + "A=M\n" +
-				"M=D" + "@SP\n" + "M=M+1\n" +
-				// Push LCL
-				"@LCL\n" + "D=M\n" + "@SP\n" + "A=M\n" +
-				"M=D" + "@SP\n" + "M=M+1\n" +
-				// Push ARG
-				"@ARG\n" + "D=M\n" + "@SP\n" + "A=M\n" +
-				"M=D" + "@SP\n" + "M=M+1\n" +
-				// Push THIS
-				"@THIS\n" + "D=M\n" + "@SP\n" + "A=M\n" +
-				"M=D" + "@SP\n" + "M=M+1\n" +
-				// Push THAT
-				"@THAT\n" + "D=M\n" + "@SP\n" + "A=M\n" +
-				"M=D" + "@SP\n" + "M=M+1\n" +
-				// ARG = SP - n - 5
-				"@SP\n" + "D=M\n" + "@" + n + "D=D-A\n" + "@5\n" +
-				"D=D-A\n" + "@ARG\n" + "M=D\n" +
-				// LCL = SP
-				"@SP\n" + "D=M\n" + "@LCL\n" + "M=D\n" +
-				// goto
-				"@SP\n" + "M=M+1\n" +  // decrement st ptr
-				"@SP\n" + "A=M\n" + "D=M\n" + // pop
-				"@" + functionName + "\n" + "D;JNE\n" +
-				"(" + returnAddress + ")\n";
-	    return s;
-//	      // SP -> R13
-//	      "@SP\n" + "D=M\n" + "@R13\n" + "M=D\n" +
-//	      // @RET -> *SP
-//	      "@RET." + i + "\n" + "D=A\n" + "@SP\n" + "A=M\n" + "M=D\n" +
-//	      // SP++
-//	      "@SP\n" + "M=M+1\n" +
-//	      // LCL -> *SP
-//	      "@LCL\n" + "D=M\n" + "@SP\n" + "A=M\n" + "M=D\n" +
-//	      // SP++
-//	      "@SP\n" + "M=M+1\n" +
-//	      // ARG -> *SP
-//	      "@ARG\n" + "D=M\n" + "@SP\n" + "A=M\n" + "M=D\n" +
-//	      // SP++
-//	      "@SP\n" + "M=M+1\n" +
-//	      // THIS -> *SP
-//	      "@THIS\n" + "D=M\n" + "@SP\n" + "A=M\n" + "M=D\n" +
-//	      // SP++
-//	      "@SP\n" + "M=M+1\n" +
-//	      // THAT -> *SP
-//	      "@THAT\n" + "D=M\n" + "@SP\n" + "A=M\n" + "M=D\n" +
-//	      // SP++
-//	      "@SP\n" + "M=M+1\n" +
-//	      // R13 - n -> ARG
-//	      "@R13\n" + "D=M\n" + "@" + n + "\n" + 
-//	      "D=D-A\n" + "@ARG\n" + "M=D\n" +
-//	      // SP -> LCL
-//	      "@SP\n" + "D=M\n" + "@LCL\n" + "M=D\n" +
-//	      "@" + f + "\n" + "0;JMP\n" + "(RET." + i + ")\n";
+//		String s = // Push return address
+//				"@" + returnAddress +"\n" + "D=A\n" + "@SP\n" + "A=M\n" +
+//				"M=D" + "@SP\n" + "M=M+1\n" +
+//				// Push LCL
+//				"@LCL\n" + "D=M\n" + "@SP\n" + "A=M\n" +
+//				"M=D" + "@SP\n" + "M=M+1\n" +
+//				// Push ARG
+//				"@ARG\n" + "D=M\n" + "@SP\n" + "A=M\n" +
+//				"M=D" + "@SP\n" + "M=M+1\n" +
+//				// Push THIS
+//				"@THIS\n" + "D=M\n" + "@SP\n" + "A=M\n" +
+//				"M=D" + "@SP\n" + "M=M+1\n" +
+//				// Push THAT
+//				"@THAT\n" + "D=M\n" + "@SP\n" + "A=M\n" +
+//				"M=D" + "@SP\n" + "M=M+1\n" +
+//				// ARG = SP - n - 5
+//				"@SP\n" + "D=M\n" + "@" + n + "D=D-A\n" + "@5\n" +
+//				"D=D-A\n" + "@ARG\n" + "M=D\n" +
+//				// LCL = SP
+//				"@SP\n" + "D=M\n" + "@LCL\n" + "M=D\n" +
+//				// goto
+//				"@SP\n" + "M=M+1\n" +  // decrement st ptr
+//				"@SP\n" + "A=M\n" + "D=M\n" + // pop
+//				"@" + functionName + "\n" + "D;JNE\n" +
+//				"(" + returnAddress + ")\n";
+	    return 
+	      // SP -> R13
+	      "@SP\n" + "D=M\n" + "@R13\n" + "M=D\n" +
+	      // @RET -> *SP
+	      "@RET." + i + "\n" + "D=A\n" + "@SP\n" + "A=M\n" + "M=D\n" +
+	      // SP++
+	      "@SP\n" + "M=M+1\n" +
+	      // LCL -> *SP
+	      "@LCL\n" + "D=M\n" + "@SP\n" + "A=M\n" + "M=D\n" +
+	      // SP++
+	      "@SP\n" + "M=M+1\n" +
+	      // ARG -> *SP
+	      "@ARG\n" + "D=M\n" + "@SP\n" + "A=M\n" + "M=D\n" +
+	      // SP++
+	      "@SP\n" + "M=M+1\n" +
+	      // THIS -> *SP
+	      "@THIS\n" + "D=M\n" + "@SP\n" + "A=M\n" + "M=D\n" +
+	      // SP++
+	      "@SP\n" + "M=M+1\n" +
+	      // THAT -> *SP
+	      "@THAT\n" + "D=M\n" + "@SP\n" + "A=M\n" + "M=D\n" +
+	      // SP++
+	      "@SP\n" + "M=M+1\n" +
+	      // R13 - n -> ARG
+	      "@R13\n" + "D=M\n" + "@" + n + "\n" + 
+	      "D=D-A\n" + "@ARG\n" + "M=D\n" +
+	      // SP -> LCL
+	      "@SP\n" + "D=M\n" + "@LCL\n" + "M=D\n" +
+	      "@" + f + "\n" + "0;JMP\n" + "(RET." + i + ")\n";
 	}
 	
 	private String function(String f, String num) {
@@ -341,22 +341,7 @@ public class Translator {
 		commands.put("not", "@SP\nA=M-1\nM=!M\n"); //not
 		commands.put("push", "@SP\nA=M\nM=D\n@SP\nM=M+1\n"); // push
 		commands.put("pop", "@R13\nM=D\n@SP\nAM=M-1\nD=M\n@R13\nA=M\nM=D\n"); //pop
-		commands.put("return",    // *(LCL - 5) -> R13
-//								"@LGL\nD=M\n@5\nA=D-A\nD=M\n@R13\nM=D\n"
-//								+ // *(SP - 1) -> *ARG
-//								"@SP\nA=M-1\nD=M\n@ARG\nA=M\nM=D \n"
-//								+ // ARG + 1 -> SP
-//								"D=A+1\n@SP\nM=D\n"
-//								+ // *(LCL - 1) -> THAT; LCL--
-//								"@LCL\nAM=M-1\nD=M\n@THAT\nM=D\n"
-//								+ // *(LCL - 1) -> THIS; LCL--
-//								"@LCL\nAM=M-1\nD=M\n@THIS\nM=D\n"
-//								+ // *(LCL - 1) -> ARG; LCL--
-//								"@LCL\nAM=M-1\nD=M\n@ARG\nM=D\n"
-//								+ // *(LCL - 1) -> LCL
-//								"@LCL\nA=M-1\nD=M\n@LCL\nM=D\n"
-//								+ //@R13 -> A
-//								"@R13\nA=M\n0;JMP\n");
+		commands.put("return",    
 				// Frame == R13
 				"@LCL\n" + "D=M\n" + "@R13\n" + "M=D\n" +
 				// put return temp
