@@ -1,0 +1,58 @@
+// The random number generator using Linear Congruential Generator (LCG) technic
+
+class Random {
+    field int seed; 
+    field int A; 
+    field int M; 
+    field int Q; 
+    field int R; 
+
+    constructor Random new(int seedIn) {
+        let seed = seedIn;
+        if (seed = 0) {
+            let seed = 1;
+        }
+        let A = 219;
+        let M = 32767; // limit of int: -32768..32767
+        let Q = M / A;
+        let R = Random.mod(M,A);
+        return this;
+    }
+
+    // return a random number 0..32767
+    method int rand() {
+        var int temp;
+        let temp = (A * (Random.mod(seed,Q))) - (R * seed / Q);
+        if (temp < 0) {
+            let seed = temp + M;
+        } else {
+            let seed = temp;
+        }
+        return seed;
+    }
+
+    // return a random number 0..range
+    method int randRange(int range) { 
+        var int scale; 
+        let scale = (M / (range + 1)); 
+        return (Random.rand() / scale); 
+    } 
+
+    //dispose the Oject
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    // return must be positive
+    method int mod(int a, int b) {
+		var int d;
+        var int r;
+        let d = Math.divide(a,b);
+        ler r = a - (b * d);
+        return r;
+	}
+
+    
+
+}
